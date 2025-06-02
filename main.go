@@ -12,9 +12,7 @@ import (
 func main() {
 	config.Carregar()
 	fmt.Println("Iniciando o servidor na porta", config.Porta)
-
-	fmt.Println("Rodando Api")
 	r := router.Gerar()
-
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Porta), r))
+
 }

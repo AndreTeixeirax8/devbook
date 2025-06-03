@@ -11,10 +11,9 @@ import (
 	"net/http"
 )
 
-//REVISAR TODO O FLUXO PARA CRIAR USUARIO APENAS REVISAR PARA ENTENDER
-
 func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("--- Inicia função de criar usuario na controller")
+
 	corpoRequest, erro := ioutil.ReadAll(r.Body)
 
 	if erro != nil {
@@ -25,6 +24,9 @@ func CriarUsuario(w http.ResponseWriter, r *http.Request) {
 	if erro = json.Unmarshal(corpoRequest, &usuario); erro != nil {
 		log.Fatal(erro)
 	}
+
+	// Aqui imprime o JSON que veio do Postman
+	fmt.Println("Corpo da requisição:", string(corpoRequest))
 
 	db, erro := banco.Conectar()
 	if erro != nil {

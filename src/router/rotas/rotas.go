@@ -14,7 +14,7 @@ type Rotas struct {
 }
 
 func Configurar(r *mux.Router) *mux.Router {
-	rotas := rotasUsuarios
+	rotas := rotasUsuarios //Essa variavel faz a ligação com o usuarios.go
 	for _, rota := range rotas {
 		r.HandleFunc(rota.URI, rota.Funcao).Methods(rota.Metodo)
 	}
